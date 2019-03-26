@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html lang>
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content>
+    <title>crc32学习笔记 | ixinxin</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x603B;&amp;#x7ED3;&amp;#x81EA;&amp;#x5DF1;&amp;#x5728;&amp;#x5199;CRC32&amp;#x78B0;&amp;#x649E;&amp;#x95EE;&amp;#x9898;&amp;#x7684;&amp;#x5C0F;&amp;#x6280;&amp;#x5DE7; &amp;#x4ECB;&amp;#x7ECD;CRC&amp;#x5B83;&amp;#x7684;&amp;#x5168;&amp;#x79F0;&amp;#x662F;&amp;#x5FAA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crc32学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/“crc32学习笔记”/index.html">
+<meta property="og:site_name" content="ixinxin">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x603B;&amp;#x7ED3;&amp;#x81EA;&amp;#x5DF1;&amp;#x5728;&amp;#x5199;CRC32&amp;#x78B0;&amp;#x649E;&amp;#x95EE;&amp;#x9898;&amp;#x7684;&amp;#x5C0F;&amp;#x6280;&amp;#x5DE7; &amp;#x4ECB;&amp;#x7ECD;CRC&amp;#x5B83;&amp;#x7684;&amp;#x5168;&amp;#x79F0;&amp;#x662F;&amp;#x5FAA">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-26T11:14:59.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="crc32学习笔记">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x603B;&amp;#x7ED3;&amp;#x81EA;&amp;#x5DF1;&amp;#x5728;&amp;#x5199;CRC32&amp;#x78B0;&amp;#x649E;&amp;#x95EE;&amp;#x9898;&amp;#x7684;&amp;#x5C0F;&amp;#x6280;&amp;#x5DE7; &amp;#x4ECB;&amp;#x7ECD;CRC&amp;#x5B83;&amp;#x7684;&amp;#x5168;&amp;#x79F0;&amp;#x662F;&amp;#x5FAA">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "Hezhijun",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>ixinxin</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Hezhijun</a>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-“crc32学习笔记”" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    crc32学习笔记
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x603B;&#x7ED3;&#x81EA;&#x5DF1;&#x5728;&#x5199;CRC32&#x78B0;&#x649E;&#x95EE;&#x9898;&#x7684;&#x5C0F;&#x6280;&#x5DE7;</p>
+<h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>CRC&#x5B83;&#x7684;&#x5168;&#x79F0;&#x662F;&#x5FAA;&#x73AF;&#x5197;&#x4F59;&#x6821;&#x9A8C;(Cyclic Redundancy Check, CRC)<br>CRC&#x7801;&#x6821;&#x9A8C;&#x539F;&#x7406;&#xFF1A;</p>
+<p>&#x53D1;&#x9001;&#x7AEF;&#xFF1A;&#x53D1;&#x9001;&#x7AEF;&#x6839;&#x636E;&#x4FE1;&#x606F;&#x5B57;&#x6BB5;&#x4E0E;&#x751F;&#x6210;&#x591A;&#x9879;&#x5F0F;&#x751F;&#x4EA7;&#x5462;&#x4E2A;CRC&#x7801;&#xFF0C;CRC&#x7801;&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x53D1;&#x9001;&#x7ED9;&#x63A5;&#x6536;&#x7AEF;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x628A;&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x6821;&#x9A8C;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;&#x4E00;&#x540C;&#x53D1;&#x9001;(&#x6CE8;&#xFF1A;&#x76EE;&#x7684;&#x662F;&#x5982;&#x679C;&#x63A5;&#x53D7;&#x7AEF;&#x68C0;&#x6D4B;&#x5230;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x80FD;&#x591F;&#x4ECE;CRC&#x7801;&#x4E2D;&#x63D0;&#x53D6;&#x51FA;&#x4FE1;&#x606F;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;)&#x3002;</p>
+<p>&#x63A5;&#x6536;&#x7AEF;&#xFF1A;&#x63A5;&#x6536;&#x5230;CRC&#x7801;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x68C0;&#x6D4B;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x65B9;&#x6CD5;&#xFF1A;&#x5C06;CRC&#x7801;&#x6570;&#x636E;&#x4E0E;&#x751F;&#x6210;&#x591A;&#x9879;&#x5F0F;&#x8FDB;&#x884C;&#x6A21;2&#x9664;&#xFF0C;&#x5982;&#x679C;&#x4F59;&#x6570;&#x4E3A;0&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x4ECE;CRC&#x7801;&#x4E2D;&#x63D0;&#x53D6;&#x51FA;&#x4FE1;&#x606F;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6570;&#x636E;&#x6C42;&#x51FA;&#x5BF9;&#x5E94;&#x7684;CRC&#xFF0C;&#x7528;&#x6765;&#x53D1;&#x73B0;&#x4F20;&#x9001;&#x8FC7;&#x7A0B;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x6BD4;&#x7279;&#x9519;&#x8BEF;<br>&#x7136;&#x800C;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5E94;&#x5F53;&#x77E5;&#x9053;&#xFF0C;&#x6B63;&#x9762;&#x6839;&#x636E;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x7B97;&#x51FA;&#x5BF9;&#x5E94;&#x7684;CRC&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;CRC&#x80FD;&#x5426;&#x6C42;&#x51FA;&#x6570;&#x636E;&#x5462;&#xFF1F;<br>&#x7B54;&#x6848;&#x662F;&#x80AF;&#x5B9A;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x4F4E;&#x4F4D;&#x6570;&#x7684;CRC&#x80AF;&#x5B9A;&#x662F;&#x53EF;&#x4EE5;&#x7206;&#x7834;&#x51FA;&#x6765;&#x7684;&#xFF1A;</p>
+<h2 id="6&#x4F4D;&#x6570;CRC32&#x78B0;&#x649E;"><a href="#6&#x4F4D;&#x6570;CRC32&#x78B0;&#x649E;" class="headerlink" title="6&#x4F4D;&#x6570;CRC32&#x78B0;&#x649E;"></a>6&#x4F4D;&#x6570;CRC32&#x78B0;&#x649E;</h2><p>&#x9644;&#x4E0A;&#x795E;&#x5668;&#xFF1A;<a href="https://github.com/theonlypwner/crc32" target="_blank" rel="noopener">https://github.com/theonlypwner/crc32</a><br>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;<br>python crc32.py reverse 0x&#x4F60;&#x7684;crc32&#x5BC6;&#x6587;<br>&#x5373;&#x53EF;&#x975E;&#x5E38;&#x8FC5;&#x901F;&#x7684;&#x7206;&#x7834;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;</p>
+<h2 id="&#x540E;&#x8BB0;"><a href="#&#x540E;&#x8BB0;" class="headerlink" title="&#x540E;&#x8BB0;"></a>&#x540E;&#x8BB0;</h2><p>&#x6301;&#x7EED;&#x66F4;&#x65B0;</p>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;<a href="https://skysec.top/2017/06/19/CRC%E7%88%86%E7%A0%B4%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">&#x4E00;&#x53F6;&#x98D8;&#x96F6;</a></p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2019-03-26T10:42:13.950Z" itemprop="datePublished">2019-03-26</time>
+
+    </span>
+    <span class="post-description-item">
+        
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2019/03/17/使用win10-搭建hexo-github博客-小白版/" class="ui tiny button">
+                    
+                    使用win10-搭建hexo-github博客-小白版
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#前言"><span>前言</span></a></li><li><a href="#介绍"><span>介绍</span></a></li><li><a href="#6位数CRC32碰撞"><span>6位数CRC32碰撞</span></a></li><li><a href="#后记"><span>后记</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2019 <a href="/">Hezhijun</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
